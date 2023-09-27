@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 
-public class Consol_Calculator {
+public class ConsolCalculator {
 
     public static void main(String[] args) {
         //시작
