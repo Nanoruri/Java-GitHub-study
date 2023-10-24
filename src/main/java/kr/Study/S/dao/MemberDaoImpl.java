@@ -23,5 +23,5 @@ public class MemberDaoImpl implements MemberDao{
         // 모든 회원 정보를 반환하는 메서드
         return members;
     }
-    }
+}
 
