@@ -2,10 +2,12 @@ package kr.Study.S.dao;
 
 import kr.Study.S.Member;
 import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+@Repository
 public class MemberDaoImpl implements MemberDao{
 
     private final List<Member> members = new ArrayList<>();
