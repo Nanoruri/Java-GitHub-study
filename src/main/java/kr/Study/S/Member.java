@@ -4,7 +4,7 @@ public class Member {
     private long id;
     private String username;
     private String password;
-
+    //이 부분이 POJO인가..?
     public Member() {
 
     }

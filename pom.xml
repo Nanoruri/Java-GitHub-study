@@ -14,9 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.5.4</spring.boot.version>
     </properties>
+
     <dependencies>
         <!-- 스프링 부트 의존성 추가 -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -35,8 +35,16 @@
             <version>2.5.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.5.4</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
+
     <build>
         <plugins>
             <!-- 메이븐 플러그인 설정 -->

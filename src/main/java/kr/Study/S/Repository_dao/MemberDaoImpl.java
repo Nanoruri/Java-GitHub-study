@@ -1,7 +1,6 @@
-package kr.Study.S.dao;
+package kr.Study.S.Repository_dao;
 
 import kr.Study.S.Member;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +23,7 @@ public class MemberDaoImpl implements MemberDao{
     public List<Member> findAll() {
         // 모든 회원 정보를 반환하는 메서드
         return members;
+
     }
 }
 
