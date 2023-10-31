@@ -1,7 +1,6 @@
 package kr.Study.S.Repository_dao;
 
 import kr.Study.S.Member;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 
 import java.util.List;
