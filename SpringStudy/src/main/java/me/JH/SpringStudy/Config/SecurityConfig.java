@@ -70,9 +70,6 @@ public class SecurityConfig  {
                     .logout()
                         .permitAll();
 
-
-
-
         return http.build();
     }
 
