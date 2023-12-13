@@ -17,8 +17,12 @@
         <button type="submit" >로그인</button>
     </form>
 
-    <form method="get" th:action="@{/find}"  ><!--메인페이지에서 가입하기 버튼 누를 시 회원가입 get요청-->
-        <button type="submit" >아이디/비밀번호 찾기</button><!--TODO : 아이디, 비밀번호 찾는 페이지 구현하기 -->
+    <form method="get" th:action="@{/findIdPage}"  ><!--메인페이지에서 가입하기 버튼 누를 시 회원가입 get요청-->
+        <button type="submit" >아이디 찾기</button>
+    </form>
+
+    <form method="get" th:action="@{/findPwPage}"  ><!--메인페이지에서 가입하기 버튼 누를 시 회원가입 get요청-->
+        <button type="submit" >비밀번호 찾기</button>
     </form>
 
 </body>

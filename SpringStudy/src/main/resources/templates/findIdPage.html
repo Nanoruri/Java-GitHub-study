@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body><!--todo: ID찾는 서비스, 컨트롤러에 구현-->
+    <form method="post" th:action="@{/findId}">
+
+        <div class="form-group"><!--사용자 이름 입력란-->
+            <label for="inputName">이름</label>
+            <input type="text"  id="inputName" name="name" th:field="*{name}" placeholder="이름"required>
+        </div>
+
+        <!--전화번호 입력란-->
+        <div class="form-group"><!--사용자 전화번호 입력란-->
+            <label for="inputPhoneNum">전화번호</label>
+            <input type="tel"  id="inputPhoneNum" name="phoneNum" th:field="*{phoneNum}" required pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                   maxlength="13" th:title="XXX-XXXX-XXXX" placeholder="000-0000-0000">
+            <span th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}"></span>
+        </div>
+
+        <button type="submit" >입력</button>
+    </form>
+</body>
+</html>

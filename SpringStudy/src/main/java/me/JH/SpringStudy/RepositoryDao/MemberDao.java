@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberDao extends JpaRepository<User,Long> {
+public interface MemberDao extends JpaRepository<User,String> {
 
 
     // 특정 조건에 따른 회원 검색 메서드
