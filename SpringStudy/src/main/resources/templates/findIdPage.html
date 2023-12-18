@@ -9,13 +9,13 @@
 
         <div class="form-group"><!--사용자 이름 입력란-->
             <label for="inputName">이름</label>
-            <input type="text"  id="inputName" name="name" th:field="*{name}" placeholder="이름"required>
+            <input type="text"  id="inputName" name="name" th:field="*{name}" placeholder="이름" required>
         </div>
 
         <!--이메일 입력란-->
         <div class="form-group"><!--사용자 이메일-->
             <label for="inputEmail">이메일</label>
-            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일"required
+            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일" required
                    th:title="xxxx@xxxxx.xxxx">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
