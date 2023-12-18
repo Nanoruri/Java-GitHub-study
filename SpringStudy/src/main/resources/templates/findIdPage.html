@@ -12,12 +12,12 @@
             <input type="text"  id="inputName" name="name" th:field="*{name}" placeholder="이름"required>
         </div>
 
-        <!--전화번호 입력란-->
-        <div class="form-group"><!--사용자 전화번호 입력란-->
-            <label for="inputPhoneNum">전화번호</label>
-            <input type="tel"  id="inputPhoneNum" name="phoneNum" th:field="*{phoneNum}" required pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                   maxlength="13" th:title="XXX-XXXX-XXXX" placeholder="000-0000-0000">
-            <span th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}"></span>
+        <!--이메일 입력란-->
+        <div class="form-group"><!--사용자 이메일-->
+            <label for="inputEmail">이메일</label>
+            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일"required
+                   th:title="xxxx@xxxxx.xxxx">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
 
         <button type="submit" >입력</button>

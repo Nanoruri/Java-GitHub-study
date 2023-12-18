@@ -15,4 +15,6 @@ public interface MemberDao extends JpaRepository<User,String> {
     //엔티티 클래스가 필요한거라고 추즉 됨
     boolean existsByUserId(String userId);
 
+    User findByNameAndEmail(String name, String email);
+
 }
