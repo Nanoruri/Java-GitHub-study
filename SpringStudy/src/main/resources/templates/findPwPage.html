@@ -22,7 +22,7 @@
         <!--이메일 입력란-->
         <div class="form-group">
             <label for="inputEmail">이메일</label>
-            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일"required
+            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일" required
                    th:title="'xxxx@xxxxx.xxxx'">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
