@@ -5,18 +5,18 @@
     <title>Title</title>
 </head>
 <body><!--todo: ID찾는 서비스, 컨트롤러에 구현-->
-    <form method="post" th:action="@{/findId}">
-
-        <div class="form-group"><!--사용자 이름 입력란-->
+    <form method="post" th:action="@{/findId}" th:object="${findUserId}">
+        <!--사용자 이름 입력란-->
+        <div class="form-group">
             <label for="inputName">이름</label>
             <input type="text"  id="inputName" name="name" th:field="*{name}" placeholder="이름" required>
         </div>
 
         <!--이메일 입력란-->
-        <div class="form-group"><!--사용자 이메일-->
+        <div class="form-group">
             <label for="inputEmail">이메일</label>
             <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일" required
-                   th:title="xxxx@xxxxx.xxxx">
+                   th:title="'xxxx@xxxxx.xxxx'">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
 

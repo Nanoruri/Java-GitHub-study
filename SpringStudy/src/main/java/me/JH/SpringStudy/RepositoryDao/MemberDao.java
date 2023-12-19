@@ -17,4 +17,6 @@ public interface MemberDao extends JpaRepository<User,String> {
 
     User findByNameAndEmail(String name, String email);
 
+    User findByNameAndEmailAndUserId(String name, String email, String userId);
+
 }

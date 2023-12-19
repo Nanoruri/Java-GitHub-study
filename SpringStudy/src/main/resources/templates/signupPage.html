@@ -36,7 +36,7 @@
             <div class="form-group"><!--사용자 이메일-->
                 <label for="inputEmail">이메일</label>
                 <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일"required
-                th:title="xxxx@xxxxx.xxxx"><!--TODO : 조금 더 깔삼하게 할 수 없나??-->
+                th:title="'xxxx@xxxxx.xxxx'"><!--TODO : 조금 더 깔삼하게 할 수 없나??-->
                 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </div>
 
