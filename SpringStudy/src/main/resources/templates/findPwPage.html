@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for="inputEmail">이메일</label>
             <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일" required
-                   th:title="'xxxx@xxxxx.xxxx'">
+                   th:title="'이메일 형식에 맞춰 작성하여주세요'">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
 

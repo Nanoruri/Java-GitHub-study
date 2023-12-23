@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user_Info")//TODO : MEMBER 말고 USER로
-public class User {
+public class User {//Entity 하나 더 만들어서 userId를 forigen key 설정하고  seq와 연결
 	@Id
 	@Column(name = "USER_ID", unique = true)
 	private String userId;//ID
