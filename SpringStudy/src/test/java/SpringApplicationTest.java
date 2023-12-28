@@ -4,6 +4,8 @@ import me.JH.SpringStudy.RepositoryDao.MemberDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.Date;
 
 
@@ -12,6 +14,7 @@ public class SpringApplicationTest {
 
 	@Autowired
 	private MemberDao memberDao;
+	private PasswordEncoder passwordEncoder;
 
 	@Test
 	public void testMariaDbConnection() {
@@ -28,5 +31,6 @@ public class SpringApplicationTest {
 
 		memberDao.save(user);
 	}
+
 }
 

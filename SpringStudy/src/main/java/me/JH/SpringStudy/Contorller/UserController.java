@@ -1,9 +1,9 @@
 package me.JH.SpringStudy.Contorller;
 
 import me.JH.SpringStudy.Entitiy.User;
-import me.JH.SpringStudy.Service.FindService;
-import me.JH.SpringStudy.Service.LoginService;
-import me.JH.SpringStudy.Service.MemberService;
+import me.JH.SpringStudy.Service.UserService.FindService;
+import me.JH.SpringStudy.Service.UserService.LoginService;
+import me.JH.SpringStudy.Service.UserService.SignuprService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.*;
  * 일반적인 작업을 처리하는 컨트롤러 클래스. 로그인 및 회원가입과 관련된 기능이 있음.
  */
 @Controller
-public class CommonController {
+public class UserController {
 
-	private final static Logger log = LoggerFactory.getLogger(CommonController.class);// Log 찍는 내용
-	private final MemberService memberService;
+	private final static Logger log = LoggerFactory.getLogger(UserController.class);// Log 찍는 내용
+	private final SignuprService memberService;
 	private final LoginService loginService;
 
 	private final FindService findService;
@@ -34,7 +34,7 @@ public class CommonController {
 	 * @param findservice   아이디/비밀번호 찾기를 수행하는 서비스
 	 */
 	@Autowired
-	public CommonController(MemberService memberService, LoginService loginService, FindService findservice) {
+	public UserController(SignuprService memberService, LoginService loginService, FindService findservice) {
 		this.memberService = memberService;
 		this.loginService = loginService;
 		this.findService = findservice;
@@ -197,13 +197,17 @@ public class CommonController {
 	@PostMapping("/findPw")
 	public String findPassword(@RequestParam("userId") String userId, @RequestParam("name") String name, @RequestParam("email") String email, Model model) {
 		boolean validateUser = findService.validateUser(userId, name, email);
-		model.addAttribute("passwordChangeUser",new User());
 
 		if (!validateUser) {//실패로직..
 			log.info("잘못된 입력입니다");
 			return "redirect:/findPwPage";//todo : 404페이지 해결하기
 		}
+		User validateUsers = new User();
+		validateUsers.setUserId(userId);
+		validateUsers.setName(name);
+		validateUsers.setEmail(email);
 
+		model.addAttribute("passwordChangeUser",validateUsers);
 		return "newPasswordPage";
 	}
 
@@ -222,7 +226,6 @@ public class CommonController {
 	/**
 	 * 비밀번호 변경로직
 	 *
-	 * @param presentPassword 현재 비밀번호
 	 * @param newPassword     새로운 비밀번호
 	 * @return 비밀번호변경 성공 시 성공 메세지 페이지로 반환 후 구현한 로그인 버튼으로 로그인 페이지로 돌아감.
 	 */

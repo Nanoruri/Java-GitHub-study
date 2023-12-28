@@ -1,7 +1,7 @@
-package me.JH.SpringStudy.Service;
+package me.JH.SpringStudy.Service.UserService;
 
-import me.JH.SpringStudy.RepositoryDao.MemberDao;
 import me.JH.SpringStudy.Entitiy.User;
+import me.JH.SpringStudy.RepositoryDao.MemberDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
