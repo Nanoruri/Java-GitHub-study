@@ -1,4 +1,4 @@
-package me.JH.SpringStudy.Service;
+package me.JH.SpringStudy.Service.UserService;
 
 import me.JH.SpringStudy.Entitiy.User;
 import me.JH.SpringStudy.RepositoryDao.MemberDao;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 
 @Service
-public class MemberService {
+public class SignuprService {
 
     private final MemberDao memberDao;
     private final PasswordEncoder passwordEncoder;
@@ -18,7 +18,7 @@ public class MemberService {
 
 
     @Autowired
-    public MemberService(MemberDao memberDao, PasswordEncoder passwordEncoder) {
+    public SignuprService(MemberDao memberDao, PasswordEncoder passwordEncoder) {
         this.memberDao = memberDao;
         this.passwordEncoder = passwordEncoder;
     }
