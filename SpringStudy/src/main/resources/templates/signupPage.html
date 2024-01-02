@@ -31,7 +31,8 @@
             <div class="form-group"><!--사용자 생년월일-->
                 <label for="inputBirth">생년월일</label><!--TODO : JS 이벤트 리스너로 조금 더 정교하게 구현가능-->
                 <input type="text"  id="inputBirth" name="birth" th:field="*{birth}" value maxlength="8" pattern="\d*" placeholder="생년월일 8자리">
-            </div>
+            </div><!--todo : date타입/ text타입 둘중에 고민해보기 text타입으로 사용시 JS 사용하여 로직 구현하기-->
+
 
             <div class="form-group"><!--사용자 이메일-->
                 <label for="inputEmail">이메일</label>
