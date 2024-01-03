@@ -15,7 +15,7 @@ public class LoginService {
 
 
 	@Autowired//의존성 쭈와왑
-	public LoginService(MemberDao memberDao, PasswordEncoder passwordEncoder){
+	public LoginService(MemberDao memberDao, PasswordEncoder passwordEncoder) {
 		this.memberDao = memberDao;
 		this.passwordEncoder = passwordEncoder;
 	}
