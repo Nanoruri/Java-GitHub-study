@@ -15,8 +15,8 @@
         <!--이메일 입력란-->
         <div class="form-group">
             <label for="inputEmail">이메일</label>
-            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일" required
-                   th:title="'xxxx@xxxxx.xxxx'">
+            <input type="text"  id="inputEmail" name="email" th:field="*{email}" placeholder="이메일"
+                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="올바른 이메일 형식이 아닙니다. 다시 입력하여 주십시오" required>
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
 
