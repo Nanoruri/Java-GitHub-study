@@ -1,7 +1,6 @@
 package me.JH.SpringStudy.RepositoryDao;
 
 import me.JH.SpringStudy.Entitiy.User;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
