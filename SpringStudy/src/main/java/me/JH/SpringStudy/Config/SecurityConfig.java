@@ -16,62 +16,62 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  {
+public class SecurityConfig {
 
-    @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.builder()
-                .username("kaby1217")
-                .password(passwordEncoder.encode("1217159"))
-                .roles("USER")
-                .build();
+	@Bean
+	public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+		UserDetails user = User.builder()
+				.username("kaby1217")
+				.password(passwordEncoder.encode("1217159"))
+				.roles("USER")
+				.build();
 
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("ADMIN")
-                .build();
+		UserDetails admin = User.builder()
+				.username("admin")
+				.password(passwordEncoder.encode("admin"))
+				.roles("ADMIN")
+				.build();
 
-        return new InMemoryUserDetailsManager(user, admin);
-    }
+		return new InMemoryUserDetailsManager(user, admin);
+	}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {//보안상의 문제로 configure에서 filterChain으로 바뀜.
-        http.csrf().disable()//csrf 비활성화
-                // 요즘은 CSRF만 방어하기 보단 JWT 쓴다고 함. 혹은 같이 쓰거나...
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {//보안상의 문제로 configure에서 filterChain으로 바뀜.
+		http.csrf().disable()//csrf 비활성화
+				// 요즘은 CSRF만 방어하기 보단 JWT 쓴다고 함. 혹은 같이 쓰거나...
 
-                .authorizeRequests()//권한 설정
-                    .antMatchers("/", "/signup", "/signupSuccess", "/login", "/idCheck")//해당 페이지에 관해
-                    .permitAll()//모든 접근 혀용
-                    .anyRequest()//다른 모든 요청에 대해서는
-                    .permitAll()// 원래는 .authenticated()였다. 로그인 페이지의302 문제 해결해야함.
+				.authorizeRequests()//권한 설정
+				.antMatchers("/", "/signup", "/signupSuccess", "/login", "/idCheck")//해당 페이지에 관해
+				.permitAll()//모든 접근 혀용
+				.anyRequest()//다른 모든 요청에 대해서는
+				.permitAll()// 원래는 .authenticated()였다. 로그인 페이지의302 문제 해결해야함.
 
-                .and()
+				.and()
 
-                    .formLogin()//위에 기입된 사이트 들은 로그인이 필요하다..
-                        .loginPage("/login")//로그인 페이지 URL 지정
+				.formLogin()//위에 기입된 사이트 들은 로그인이 필요하다..
+				.loginPage("/login")//로그인 페이지 URL 지정
 //                        .loginProcessingUrl("/loginCheck") //이거 cotroller에서 구현함.로그인 Form 처리 Url, 여기를 통해 post요청이 들어감.
-                        .usernameParameter("userId") // 아이디 파라미터명 설정
-                        .passwordParameter("userPassword") // 패스워드 파라미터명 설정
-                        .defaultSuccessUrl("/") // 로그인 성공 후의 리다이렉션 URL 설정, 여기선/main페이지로 리다이렉트 TODO : 파라미터 변경
-                        .failureForwardUrl("/signupError")
-                        .permitAll() //로그인 페이지 접속하는것에 대해 권한 X
+				.usernameParameter("userId") // 아이디 파라미터명 설정
+				.passwordParameter("userPassword") // 패스워드 파라미터명 설정
+				.defaultSuccessUrl("/") // 로그인 성공 후의 리다이렉션 URL 설정, 여기선/main페이지로 리다이렉트 TODO : 파라미터 변경
+				.failureForwardUrl("/signupError")
+				.permitAll() //로그인 페이지 접속하는것에 대해 권한 X
 
-                .and()
-                    .sessionManagement()//시큐리티는 세션 형식을 사용하기에 JWT토큰을 위해 세션 형식을 꺼준다.
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.sessionManagement()//시큐리티는 세션 형식을 사용하기에 JWT토큰을 위해 세션 형식을 꺼준다.
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                .and()
-                    .logout()
-                        .permitAll();
+				.and()
+				.logout()
+				.permitAll();
 
-        return http.build();
-    }
+		return http.build();
+	}
 
 //    @Bean
 //    public CsrfTokenRepository csrfTokenRepository() {

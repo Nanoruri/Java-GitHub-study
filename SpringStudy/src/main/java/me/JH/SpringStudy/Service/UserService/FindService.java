@@ -28,9 +28,9 @@ public class FindService {
 
 	public boolean validateUser(String userId, String name, String email) {//todo : findBy properties, Criteria 사용, name이랑 email 왜 받지
 		boolean isValid = memberDao.findById(userId).isPresent();
-		log.info(isValid ? "사용자를 찾았습니다" + userId : "사용자를 찾을 수 없습니다." );
+		log.info(isValid ? "사용자를 찾았습니다" + userId : "사용자를 찾을 수 없습니다.");
 		return isValid;
-		}
+	}
 
 	public boolean changePassword(User changePasswordUser, String newPassword) {
 		User user = memberDao.findByUserIdAndNameAndEmail(changePasswordUser.getUserId(),//todo : 주성이한테 검사 받고 findByProperties 적용하기
@@ -42,13 +42,13 @@ public class FindService {
 			return false;
 		}
 
-			// 새로운 비밀번호로 업데이트
-			user.setPassword(passwordEncoder.encode(newPassword));
-			// 업데이트된 사용자 정보 저장
-			memberDao.save(user);
-			return true;
+		// 새로운 비밀번호로 업데이트
+		user.setPassword(passwordEncoder.encode(newPassword));
+		// 업데이트된 사용자 정보 저장
+		memberDao.save(user);
+		return true;
 	}
-	}
+}
 
 //	public void resetPassword(String presentPassword, String newPassword) {//todo : 이거 없는 비밀번호 넣어도 로직이 정상작동됨;;
 //		String hashedRawPassword = passwordEncoder.encode(presentPassword);

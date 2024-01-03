@@ -55,8 +55,6 @@ public class User {//Entity 하나 더 만들어서 userId를 forigen key 설정
 	}
 
 
-
-
 	public String getUserId() {
 		return userId;
 	}

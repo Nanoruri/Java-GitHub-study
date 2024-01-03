@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * 일반적인 작업을 처리하는 컨트롤러 클래스. 로그인 및 회원가입과 관련된 기능이 있음.
  */
 @Controller
-public class UserController {
+public class UserController {//todo : 컨트롤러 분리하기.
 
 	private final static Logger log = LoggerFactory.getLogger(UserController.class);// Log 찍는 내용
 	private final SignuprService memberService;
@@ -188,9 +188,10 @@ public class UserController {
 
 	/**
 	 * 비밀번호 찾는 페이지에 대한 유저 인증 로직
+	 *
 	 * @param userId 사용자 아이디
-	 * @param name 사용자 이름
-	 * @param email 사용자 이메일
+	 * @param name   사용자 이름
+	 * @param email  사용자 이메일
 	 * @return 인증 성공시 비밀번호 변경페이지로 반환, 실패시 로그와 함께 비밀번호 찾는 페이지로 돌아옴.
 	 */
 
@@ -207,7 +208,7 @@ public class UserController {
 		validateUsers.setName(name);
 		validateUsers.setEmail(email);
 
-		model.addAttribute("passwordChangeUser",validateUsers);
+		model.addAttribute("passwordChangeUser", validateUsers);
 		return "newPasswordPage";
 	}
 
@@ -226,15 +227,15 @@ public class UserController {
 	/**
 	 * 비밀번호 변경로직
 	 *
-	 * @param newPassword     새로운 비밀번호
+	 * @param newPassword 새로운 비밀번호
 	 * @return 비밀번호변경 성공 시 성공 메세지 페이지로 반환 후 구현한 로그인 버튼으로 로그인 페이지로 돌아감.
 	 */
 
 	@PostMapping("/passwordChange")
 	public String resetPassword(@ModelAttribute("passwordChangeUser") User changePasswordUser,
 	                            @RequestParam("newPassword") String newPassword
-	                            ) {//todo : 에러 로직 구현하기, 비밀번호 설정 로직 점검하기
-		if (!findService.changePassword(changePasswordUser, newPassword)){
+	) {//todo : 에러 로직 구현하기, 비밀번호 설정 로직 점검하기
+		if (!findService.changePassword(changePasswordUser, newPassword)) {
 			log.info("실패.");
 			return "redirect:/findPw";
 		}
@@ -248,8 +249,8 @@ public class UserController {
 //	}
 
 
-		@GetMapping("/passwordChangeSuccess")
-	public String passwordChangeSuccess(){
+	@GetMapping("/passwordChangeSuccess")
+	public String passwordChangeSuccess() {
 		return "passwordChangeSuccessPage";
 	}
 }
